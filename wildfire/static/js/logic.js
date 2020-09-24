@@ -1,5 +1,5 @@
  
-// drought data from each year
+// drought data from each year GeoJSON
 var DroughtData2010 = "https://www1.ncdc.noaa.gov/pub/data/nidis/geojson/us/usdm/historical/usdm-geojson/geo-original/USDM-20100907-original.geojson";
 var DroughtData2011 = "https://www1.ncdc.noaa.gov/pub/data/nidis/geojson/us/usdm/historical/usdm-geojson/geo-original/USDM-20110913-original.geojson"
 var DroughtData2012 = "https://www1.ncdc.noaa.gov/pub/data/nidis/geojson/us/usdm/historical/usdm-geojson/geo-original/USDM-20120911-original.geojson"
@@ -25,13 +25,23 @@ var droughtyears = [DroughtData2010, DroughtData2011, DroughtData2012, DroughtDa
     case 3:
       return "#de2d26";
     case 4:
-      return "purple";
-    default:
       return "#a50f15";
+    default:
+      return "purple";
     }
   }
 
-// Grabbing our GeoJSON data..
+  // function chooseColor(d) {
+  //   return d = 0 ? '#fee5d9' :
+  //          d = 1 ? '#fcae91' :
+  //          d = 2 ? '#fb6a4a' :
+  //          d = 3 ? '#de2d26' :
+  //          d = 4 ? '#a50f15' :
+  //        'purple';
+  //   } 
+
+
+// creating layer groups
 var yeargroup2010 = L.layerGroup();
 var yeargroup2011 = L.layerGroup();
 var yeargroup2012 = L.layerGroup();
@@ -62,7 +72,35 @@ d3.json(droughtyear, function(data) {
 })
 })
 
+// create legend
+var legend = L.control({position: 'bottomright'});
+legend.onAdd = function(map) {
+var div = L.DomUtil.create('div', 'info legend'),
+    grades = [0, 1, 2, 3, 4],
+    labels = [];
+// loop through our density intervals and generate a label with a colored square for each interval
+for (var i = 0; i < grades.length; i++) {
+    div.innerHTML +=
+        '<i style="background:' + chooseColor(grades[i]+1) + '"></i> ' +
+        grades[i] + (grades[i + 1] ? '&ndash;' + grades[i] + '<br>' : '+');
+}
+return div;
+};
 
+// Import Data
+d3.csv("filtered_fire.csv", function(firedata) {
+console.log(firedata)
+yearlayers.forEach((yearlayer, i) => {
+  let fires = firedata.filter(f => f.FIREYEAR == 2010 + i)
+  fires.forEach(fire => {
+    L.marker([fire.Y, fire.X])
+      .addTo(yearlayer)
+  })
+})
+});
+
+
+// basemaps
 var lightmap= L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}?" +
 "access_token={accessToken}",{
   attribution: "Map data &copy; <a href=\"http://openstreetmap.org\">OpenStreetMap</a> contributors, <a href=\"http://creativecommons.org/licenses/by-sa/2.0/\">CC-BY-SA</a>, Imagery © <a href=\"http://mapbox.com\">Mapbox</a>",
@@ -95,7 +133,7 @@ Drought2016: yeargroup2016,
 Drought2017: yeargroup2017,
 Drought2018: yeargroup2018,
 Drought2019: yeargroup2019,
-Droguth2020: yeargroup2020
+Drought2020: yeargroup2020
 };
 
 // Create our map, giving it the streetmap and earthquakes layers to display on load
@@ -113,9 +151,9 @@ layers: [lightmap, satellite,]
 L.control.layers(baseMaps, overlayMaps, {
 collapsed: false
 }).addTo(myMap);
+legend.addTo(myMap);
 
-
-
+// });
 
 
 
