@@ -1,29 +1,30 @@
+
 from flask import Flask, render_template, redirect, jsonify
 from flask_pymongo import PyMongo
+from bson.json_util import dumps
 
 
 
 app = Flask(__name__)
 
 
-mongo = PyMongo(app, uri="mongodb://localhost:27017/mars_app")
+mongo = PyMongo(app, uri="mongodb://localhost:27017/firedata")
 
 
 
 @app.route("/")
 def index():
-    mars = mongo.db.mars.find_one()
-    return render_template("index.html", mars=mars)
+    fires = mongo.db.fire_data.find()
+    return render_template("index.html", fires=fires)
 
-@app.route("/mardata")
-def mongdata():
-    facts = mongo.db.mars
-    return (facts)
 
+@app.route("/firedata")
+def firedata():
+    fires = list(mongo.db.fire_data.find())
+    fire_json = dumps(fires)
+    return fire_json
 
 
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-

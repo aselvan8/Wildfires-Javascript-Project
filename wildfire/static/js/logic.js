@@ -88,7 +88,7 @@ return div;
 };
 
 // Import Data
-d3.csv("filtered_fire.csv", function(firedata) {
+d3.json("http://127.0.0.1:5000/firedata", function(firedata) {
 console.log(firedata)
 yearlayers.forEach((yearlayer, i) => {
   let fires = firedata.filter(f => f.FIREYEAR == 2010 + i)
@@ -188,7 +188,7 @@ L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 
 
 // Import Data
-d3.csv("filtered_fire.csv").then(function(data) {
+d3.json("http://127.0.0.1:5000/firedata").then(function(data) {
 
   console.log(data)
   // convert strings to int
