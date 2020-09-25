@@ -10,6 +10,7 @@ var DroughtData2017 = "https://www1.ncdc.noaa.gov/pub/data/nidis/geojson/us/usdm
 var DroughtData2018 = "https://www1.ncdc.noaa.gov/pub/data/nidis/geojson/us/usdm/historical/usdm-geojson/geo-original/USDM-20180911-original.geojson"
 var DroughtData2019 = "https://www1.ncdc.noaa.gov/pub/data/nidis/geojson/us/usdm/historical/usdm-geojson/geo-original/USDM-20190910-original.geojson"
 var DroughtData2020 = "https://www1.ncdc.noaa.gov/pub/data/nidis/geojson/us/usdm/historical/usdm-geojson/geo-original/USDM-20200915-original.geojson"
+
 var droughtyears = [DroughtData2010, DroughtData2011, DroughtData2012, DroughtData2013, DroughtData2014, DroughtData2015, DroughtData2016, DroughtData2017, DroughtData2018, DroughtData2019, DroughtData2020]
   function chooseColor(droughtcat) {
     switch (droughtcat) {
@@ -27,14 +28,7 @@ var droughtyears = [DroughtData2010, DroughtData2011, DroughtData2012, DroughtDa
       return "purple";
     }
   }
-  // function chooseColor(d) {
-  //   return d = 0 ? '#FEE5D9' :
-  //          d = 1 ? '#FCAE91' :
-  //          d = 2 ? '#FB6A4A' :
-  //          d = 3 ? '#DE2D26' :
-  //          d = 4 ? '#A50F15' :
-  //        'purple';
-  //   } 
+
 // creating layer groups
 var yeargroup2010 = new L.layerGroup();
 var yeargroup2011 = new L.layerGroup();
@@ -86,7 +80,7 @@ d3.json("/firedata").then(function(firedata) {
 yearlayers.forEach((yearlayer, i) => {
   let fires = firedata.filter(f => +f.FIREYEAR == 2010 + i)
   fires.forEach(fire => {
-    L.marker([fire.Y, fire.X])
+    L.marker([fire.Y, fire.X]).bindPopup("<h5>Fire Name: " + fire.FIRENAME + "<h/5><p>Total Acres burned: "+ fire.TOTALACRES + "<h/5><p>Cause of Fire: "+ fire.STATCAUSE)
       .addTo(yearlayer)
   })
 })

@@ -9,7 +9,6 @@ let markerColor = "black";
 
    markerColor = "red";
  }
-  
 
 
 var trace1 = {
@@ -35,6 +34,24 @@ var data = [trace1, trace2];
 
 var layout = {
   title: 'Monthly Oceanic Nino Index (ONI)',
+  xaxis: {
+    automargin: true,
+    title:{
+      text: 'Month',
+      standoff: 20
+    },
+    titlefont: {
+      size: 12,
+      color: 'black'
+    },
+  },
+  yaxis: {
+    title: 'Change in Temperature (C)',
+    titlefont: {
+      size: 12,
+      color: 'black'
+    },
+  },
   shapes: [
     {
         type: 'line',
@@ -63,32 +80,6 @@ var layout = {
         }    
     }
     ],
-//   xaxis: {
-//     autorange: true,
-//     range: ['1/1/2015', '1/1/2020'],
-//     rangeselector: {buttons: [
-//         {
-//           count: 12,
-//           label: '1m',
-//           step: 'month',
-//           stepmode: 'backward'
-//         },
-//         {
-//           count: 64,
-//           label: '5 Years',
-//           step: 'month',
-//           stepmode: 'backward'
-//         },
-//         {step: 'all'}
-//       ]},
-//     rangeslider: {range: ['1/1/2015', '1/1/2020']},
-//     type: 'date'
-//   },
-//   yaxis: {
-//     autorange: true,
-//     range: [-2, 3],
-//     type: 'linear'
-//   }
 };
 
 Plotly.newPlot('myDiv', data, layout);

@@ -123,3 +123,25 @@ var ctx2 = document.getElementById('doughChart2').getContext('2d');
     // Configuration options go here
     options: {}
   });
+
+  // ---------------------------------------------------------------------------------------------
+
+//  Total Acres by Year Visualization
+var ctx3 = document.getElementById('doughChart3').getContext('2d');
+  var doughnutChart3 = new Chart(ctx3, {
+    // The type of chart we want to create
+    type: 'doughnut',
+    // The data for our dataset
+    data: {
+        labels: ['2010', '2011', '2012', '2013', '2014', '2015', '2016', '2017', '2018', '2019'],
+        datasets: [{
+            label: 'My dataset',
+            backgroundColor: ['#250066', "#390099", "#6C0079", '#850069', "#9E0059", "#FF0054","#FF2A2A", "#FF5400", "#FF8900", "#FFBD00"],
+            borderColor: 'rgb(255, 255, 255)',
+            data: [372059, 2069404, 4349173, 1510563, 952690, 2510226, 1324693, 2882366, 2565586, 770370]
+        }]
+    },
+    // Configuration options go here
+    options: {}
+  });
+  
