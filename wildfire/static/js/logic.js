@@ -1,5 +1,5 @@
 
-
+// The second Map - Visualize fires 500+ acres by number of acres burned
 
 
 // Create 2nd map object
@@ -74,7 +74,7 @@ d3.json("/firedata").then(function(data) {
 
 // ---------------------------------------------------------------------------------------------
 
-
+// The Chart.js doughnut visual - Acres Burned
 
 
 var ctx = document.getElementById('doughChart').getContext('2d');
@@ -99,3 +99,27 @@ var doughnutChart = new Chart(ctx, {
 });
 
 
+
+
+
+// ---------------------------------------------------------------------------------------------
+
+//  Fire Cause Visualization
+
+var ctx2 = document.getElementById('doughChart2').getContext('2d');
+  var doughnutChart2 = new Chart(ctx2, {
+    // The type of chart we want to create
+    type: 'doughnut',
+    // The data for our dataset
+    data: {
+        labels: ['0-Unknown', '1-Lightning', '2-Equipment Use', '3-Smoking', '4-Campfire', '5-Debris Burning', '6-Railroad', '7-Arson', '8-Children', '9-Miscellaneous'],
+        datasets: [{
+            label: 'My dataset',
+            backgroundColor: ['#03071E', "#370617", "#6A040F", '#9D0208', "#D00000", "#DC2F02","#E85D04", "#F48C06", "#FAA307", "#FFBA08"],
+            borderColor: 'rgb(255, 255, 255)',
+            data: [18, 1091, 85, 2, 57, 15, 11, 94, 3, 394]
+        }]
+    },
+    // Configuration options go here
+    options: {}
+  });

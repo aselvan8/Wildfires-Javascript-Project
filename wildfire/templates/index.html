@@ -51,9 +51,16 @@
 
     <div class="row">
       <div class="col-md-12 text-center">
-        <h4>Wild fires that burned 500+ acres in the US from 2010 to 2020</h4>
+        <h2>Nino</h2>
       </div>
     </div>
+
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <div id="myDiv"></div>
+      </div>
+    </div>
+
 
     <div class="row mb-4">
       <div class="col-md-12 text-center">
@@ -78,18 +85,28 @@
       </div>
     </div>
 
+    <div class="row">
+      <div class="col-md-6">
+        <center><h3>Acres Burned per Fire</h3></center>
+        <center><h5>All Fires in the US 2010-2020</h5></center>
+      </div>
+      <div class="col-md-6">
+      <center><h3>Cause of Fire</h3></center>
+      <center><h5>The Cause of Fires that burned 500+ Acres in the US 2010-2020</h5></center>
+      </div>
+    </div>
+
 
 
     <div class="row">
-      <div class="col-md-6 text-center" >
+      <div class="col-md-6">
         <div id="dough">
-          <h3>Acres Burned per Fire</h3>
           <canvas id="doughChart"></canvas>
         </div>
       </div>
       <div class="col-md-6">
-        <div id="dough">
-          <canvas id="doughChart"></canvas>
+        <div id="dough2">
+          <canvas id="doughChart2"></canvas>
         </div>
       </div>
     </div>
@@ -117,8 +134,9 @@
     integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
     crossorigin=""></script>
 
-  <!-- Chart.js -->
+  <!-- Chart.js and Plotly.js -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 
   <!-- D3 JavaScript -->
 

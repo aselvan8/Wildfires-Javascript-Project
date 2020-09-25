@@ -85,9 +85,7 @@ return div;
 d3.json("/firedata").then(function(firedata) {
 yearlayers.forEach((yearlayer, i) => {
   let fires = firedata.filter(f => +f.FIREYEAR == 2010 + i)
-  console.log(fires)
   fires.forEach(fire => {
-      console.log("line 90")
     L.marker([fire.Y, fire.X])
       .addTo(yearlayer)
   })

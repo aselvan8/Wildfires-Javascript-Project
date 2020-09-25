@@ -2,7 +2,6 @@
 from flask import Flask, render_template, redirect, jsonify
 from flask_pymongo import PyMongo
 from bson.json_util import dumps
-from pprint import pprint
 
 
 
@@ -24,8 +23,13 @@ def index():
 def firedata():
     fires = list(mongo.db.filtered_fire.find())
     fire_json = dumps(fires)
-    pprint(fire_json)
     return fire_json
+
+@app.route("/ninodata")
+def ninodata():
+    ninos = list(mongo.db.nino_data.find())
+    nino_json = dumps(ninos)
+    return nino_json
 
 
 
