@@ -36,17 +36,17 @@ var droughtyears = [DroughtData2010, DroughtData2011, DroughtData2012, DroughtDa
   //        'purple';
   //   } 
 // creating layer groups
-var yeargroup2010 = L.layerGroup();
-var yeargroup2011 = L.layerGroup();
-var yeargroup2012 = L.layerGroup();
-var yeargroup2013 = L.layerGroup();
-var yeargroup2014 = L.layerGroup();
-var yeargroup2015 = L.layerGroup();
-var yeargroup2016 = L.layerGroup();
-var yeargroup2017 = L.layerGroup();
-var yeargroup2018 = L.layerGroup();
-var yeargroup2019 = L.layerGroup();
-var yeargroup2020 = L.layerGroup();
+var yeargroup2010 = new L.layerGroup();
+var yeargroup2011 = new L.layerGroup();
+var yeargroup2012 = new L.layerGroup();
+var yeargroup2013 = new L.layerGroup();
+var yeargroup2014 = new L.layerGroup();
+var yeargroup2015 = new L.layerGroup();
+var yeargroup2016 = new L.layerGroup();
+var yeargroup2017 = new L.layerGroup();
+var yeargroup2018 = new L.layerGroup();
+var yeargroup2019 = new L.layerGroup();
+var yeargroup2020 = new L.layerGroup();
 yearlayers= [yeargroup2010,yeargroup2011,yeargroup2012,yeargroup2013,yeargroup2014,yeargroup2015,yeargroup2016,yeargroup2017,yeargroup2018,yeargroup2019,yeargroup2020]
 
 droughtyears.forEach((droughtyear, i) => {
@@ -83,15 +83,17 @@ return div;
 
 // Import Data
 d3.json("/firedata").then(function(firedata) {
-console.log(firedata)
 yearlayers.forEach((yearlayer, i) => {
-  let fires = firedata.filter(f => f.FIREYEAR == 2010 + i)
+  let fires = firedata.filter(f => +f.FIREYEAR == 2010 + i)
+  console.log(fires)
   fires.forEach(fire => {
+      console.log("line 90")
     L.marker([fire.Y, fire.X])
       .addTo(yearlayer)
   })
 })
 });
+
 // basemaps
 var lightmap= L.tileLayer("https://api.mapbox.com/styles/v1/mapbox/light-v9/tiles/256/{z}/{x}/{y}?" +
 "access_token={accessToken}",{
