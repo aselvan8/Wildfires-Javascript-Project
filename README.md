@@ -5,9 +5,12 @@ Analyze data from wildfires from 2010-2020 to find trends in wildfire occurance.
 The Oceanic Nino Index (ONI) is the main indicator for monitoring climate patterns called the El Nino-Southern OScillation (ENSO). An ONI of +0.5C indicates El Nino conditions, while -0.5C La Nina conditions. El Nino conditions tend to create more opportunities for wildfire conditions in the United States.
 
 The following visualization shows the ONI for the last 10 years.
-
-![Nino-Visual](https://raw.githubusercontent.com/erharker/Wildfires-Javascript-Project/master/Monthly%20Oceanic%20Nino%20Index%20(ONI).JPG)
-
+![Drought_Map](https://raw.githubusercontent.com/erharker/Wildfires-Javascript-Project/master/wildfire/static/images/map1.PNG)
+![Acres_Doughnut](https://raw.githubusercontent.com/erharker/Wildfires-Javascript-Project/master/wildfire/static/images/doughnut.PNG)
+![Nino-Visual](https://raw.githubusercontent.com/erharker/Wildfires-Javascript-Project/master/wildfire/static/images/nino.PNG)
+![Fire_Map](https://raw.githubusercontent.com/erharker/Wildfires-Javascript-Project/master/wildfire/static/images/map2.PNG)
+![Drought_PNG](https://raw.githubusercontent.com/erharker/Wildfires-Javascript-Project/master/wildfire/static/images/droughtst.PNG)
+![Donuts](https://raw.githubusercontent.com/erharker/Wildfires-Javascript-Project/master/wildfire/static/images/doughnut2.PNG)
 ## data sources
 https://catalog.data.gov/dataset/national-usfs-fire-occurrence-point-feature-layer
 
