@@ -23,3 +23,4 @@ https://www.drought.gov/drought/drought-data-download-and-services
 https://data.humdata.org/dataset/monthly-oceanic-nino-index-oni
 
 ## Conclusions
+We found that there was a definite correlation between droughts and wildfires. Majority of wildfires are caused by lightning strikes, during droughts these lightning strikes are not accompanied by rain. El Nino conditions and wildfires have a correlation, particularly on the west coast, as the hot air from El Nino greatly increases the temperatures on the west coast. Some wildfires are caused by human negligence, which has been the case for many of the destructive fires in the last decade.  
