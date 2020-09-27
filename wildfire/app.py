@@ -25,11 +25,7 @@ def firedata():
     fire_json = dumps(fires)
     return fire_json
 
-@app.route("/ninodata")
-def ninodata():
-    ninos = list(mongo.db.nino_data.find())
-    nino_json = dumps(ninos)
-    return nino_json
+
 
 
 
